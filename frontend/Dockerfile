@@ -24,3 +24,10 @@ RUN \
     fi
 # --- End Install Dependencies ---
 
+# --- Dev Stage ---
+FROM base as dev
+WORKDIR /app
+# Copy over the  deps from out install state to our dev stage
+COPY --from=deps /app/node_modules ./node_modules
+# Copy over the rest of our code
+COPY . .
