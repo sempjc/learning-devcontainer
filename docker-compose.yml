@@ -1,11 +1,17 @@
 version: 6 (50.0)
 services:
+  # ------------------|> Frontend Service <|------------------
   frontend:
     container_name: frontend
     build:
       context: ./frontend
       target: dev
     restart: always
+
+    # Uncomment the following line to run the frontend service as a normal container
+    # command: yarn dev
+
+    # Uncomment the following line to run the frontend service as part of VSCode devcontainer setup
     command: /bin/sh -c "while sleep 1000; do :; done"
     environment:
       - NODE_ENV=development
@@ -15,3 +21,4 @@ services:
       - /app/.next
     ports:
       - 3000:3000
+# ------------------|> End Frontend Service <|------------------
