@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = { output: "standalone" };
 
-module.exports = nextConfig;
+module.exports = {
+  webpack: (config) => {
+    config.watchOptions = {
+      poll: 1000,
+      aggregateTimeout: 300,
+    };
+    return config;
+  },
+};
